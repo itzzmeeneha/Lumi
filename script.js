@@ -223,7 +223,7 @@
         }
         const thinking = addChatMessage("Thinking about that…", "lumi", true);
         try {
-            const response = await fetch("http://localhost:3002/api/chat", {
+            const response = await fetch("/api/chat", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: cleanMessage, history: state.conversation })
