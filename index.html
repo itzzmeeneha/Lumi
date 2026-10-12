@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LUMI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="universe">
+
+        <!-- Background glow -->
+        <div class="space-glow glow-a"></div>
+        <div class="space-glow glow-b"></div>
+        <div class="space-glow glow-c"></div>
+
+        <!-- Light waves -->
+        <div class="light-wave wave-1"></div>
+        <div class="light-wave wave-2"></div>
+
+
+        <!-- Star layers -->
+        <div class="star-layer layer-small">
+            <div class="stars stars-small"></div>
+        </div>
+
+        <div class="star-layer layer-medium">
+            <div class="stars stars-medium"></div>
+        </div>
+
+        <div class="star-layer layer-large">
+            <div class="stars stars-large"></div>
+        </div>
+
+
+        <!-- Floating stars -->
+        <div class="floating-star star-1">✦</div>
+        <div class="floating-star star-2">✧</div>
+        <div class="floating-star star-3">✦</div>
+        <div class="floating-star star-4">✧</div>
+        <div class="floating-star star-5">✦</div>
+        <div class="floating-star star-6">✧</div>
+        <div class="floating-star star-7">✦</div>
+        <div class="floating-star star-8">✧</div>
+
+        <header class="app-header" aria-label="LUMI controls">
+            <div class="brand-mark" aria-label="LUMI AI music companion"><span aria-hidden="true">✦</span> LUMI</div>
+            <div class="header-actions">
+                <button id="albumButton" class="utility-button" type="button">Create album</button>
+                <button id="memoryButton" class="utility-button" type="button" aria-expanded="false" aria-controls="memoryPanel">Music memory</button>
+            </div>
+        </header>
+
+
+        <!-- LUMI -->
+        <section class="lumi-stage">
+
+            <div class="lumi">
+
+                <svg
+                    class="lumi-face"
+                    viewBox="0 0 500 300"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+
+                    <!-- LEFT EYE -->
+                    <g id="leftEye">
+
+                        <ellipse
+                            id="leftEyeShape"
+                            cx="170"
+                            cy="145"
+                            rx="27"
+                            ry="38"
+                            fill="#05070d"
+                        />
+
+                        <ellipse
+                            id="leftHighlight"
+                            cx="160"
+                            cy="132"
+                            rx="7"
+                            ry="10"
+                            fill="white"
+                        />
+
+                        <ellipse
+                            id="leftSmallHighlight"
+                            cx="178"
+                            cy="151"
+                            rx="3"
+                            ry="4"
+                            fill="white"
+                        />
+
+                        <circle
+                            id="leftSparkle"
+                            cx="145"
+                            cy="120"
+                            r="5"
+                            fill="white"
+                        />
+
+                    </g>
+
+
+                    <!-- RIGHT EYE -->
+                    <g id="rightEye">
+
+                        <ellipse
+                            id="rightEyeShape"
+                            cx="330"
+                            cy="145"
+                            rx="27"
+                            ry="38"
+                            fill="#05070d"
+                        />
+
+                        <ellipse
+                            id="rightHighlight"
+                            cx="320"
+                            cy="132"
+                            rx="7"
+                            ry="10"
+                            fill="white"
+                        />
+
+                        <ellipse
+                            id="rightSmallHighlight"
+                            cx="338"
+                            cy="151"
+                            rx="3"
+                            ry="4"
+                            fill="white"
+                        />
+
+                        <circle
+                            id="rightSparkle"
+                            cx="305"
+                            cy="120"
+                            r="5"
+                            fill="white"
+                        />
+
+                    </g>
+
+
+                    <!-- CHEEKS -->
+                    <ellipse
+                        id="leftCheek"
+                        cx="115"
+                        cy="205"
+                        rx="28"
+                        ry="13"
+                        fill="#ff8fb3"
+                        opacity="0.65"
+                    />
+
+                    <ellipse
+                        id="rightCheek"
+                        cx="385"
+                        cy="205"
+                        rx="28"
+                        ry="13"
+                        fill="#ff8fb3"
+                        opacity="0.65"
+                    />
+
+
+                    <!-- MOUTH -->
+                    <path
+                        id="mouth"
+                        d="M235 185 Q250 200 265 185"
+                        fill="none"
+                        stroke="#05070d"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+            </div>
+
+        </section>
+
+
+        <!-- MUSIC UI -->
+        <section class="music-universe">
+
+
+            <!-- SEARCH MUSIC -->
+            <div class="spotify-search">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search Spotify..."
+                    autocomplete="off"
+                >
+
+                <button
+                    id="searchButton"
+                    type="button"
+                >
+                    Search
+                </button>
+
+            </div>
+
+
+            <!-- SEARCH RESULTS -->
+            <div
+                id="searchResults"
+                class="search-results"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- SONG INFORMATION -->
+            <div class="song-info">
+
+                <div class="song-label">
+                    NOW PLAYING
+                </div>
+
+                <div
+                    id="songTitle"
+                    class="song-title"
+                >
+                    CONNECTING TO SPOTIFY...
+                </div>
+
+                <div
+                    id="songArtist"
+                    class="song-artist"
+                >
+                    LUMI
+                </div>
+
+            </div>
+
+
+            <!-- Equalizer -->
+            <div class="equalizer">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+            <!-- LUMI Signature: a playback-responsive halo of sound lines. -->
+            <div id="lumiSignature" class="lumi-signature" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+
+            <!-- Progress -->
+            <div class="music-progress">
+
+                <span id="currentTime">
+                    0:00
+                </span>
+
+                <div
+                    id="progressTrack"
+                    class="progress-track"
+                >
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill"
+                    ></div>
+
+                </div>
+
+                <span id="totalTime">
+                    0:00
+                </span>
+
+            </div>
+
+
+            <!-- Controls -->
+            <div class="music-controls">
+
+                <button
+                    id="previousButton"
+                    class="music-button secondary"
+                    type="button"
+                    aria-label="Previous Spotify track"
+                >
+                    ‹‹
+                </button>
+
+
+                <button
+                    id="playButton"
+                    class="music-button play-button"
+                    type="button"
+                    aria-label="Play music"
+                >
+
+                    <span id="playIcon">
+                        ▶
+                    </span>
+
+                </button>
+
+
+                <button
+                    id="nextButton"
+                    class="music-button secondary"
+                    type="button"
+                    aria-label="Next Spotify track"
+                >
+                    ››
+                </button>
+
+            </div>
+
+
+            <!-- Spotify -->
+            <button
+                id="connectSpotify"
+                class="spotify-button"
+                type="button"
+            >
+                Connect Spotify
+            </button>
+
+
+            <!-- Music particles -->
+            <div class="music-particles">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </section>
+
+        <aside id="albumPanel" class="side-panel album-panel" aria-labelledby="albumTitle" hidden>
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">PERSONALIZED COLLECTION</p>
+                    <h2 id="albumTitle">Your LUMI album</h2>
+                </div>
+                <button class="panel-close" type="button" data-close-panel="albumPanel" aria-label="Close album">×</button>
+            </div>
+            <p id="albumExplanation" class="panel-copy">Connect Spotify and LUMI will build a small collection around your taste.</p>
+            <div id="albumTracks" class="album-tracks"></div>
+        </aside>
+
+        <aside id="memoryPanel" class="side-panel memory-panel" aria-labelledby="memoryTitle" hidden>
+            <div class="panel-heading">
+                <div>
+                    <p class="eyebrow">ONLY WHAT YOU TELL LUMI</p>
+                    <h2 id="memoryTitle">Music memory</h2>
+                </div>
+                <button class="panel-close" type="button" data-close-panel="memoryPanel" aria-label="Close music memory">×</button>
+            </div>
+            <p class="panel-copy">Remove anything here at any time. One-off song requests are not automatically saved.</p>
+            <div id="memoryContents" class="memory-contents"></div>
+        </aside>
+
+        <aside class="lumi-chat" aria-label="Chat with LUMI">
+            <div class="chat-heading"><span aria-hidden="true">✦</span><span>LUMI is listening</span></div>
+            <div class="chat-messages" id="chatMessages" aria-live="polite" aria-relevant="additions"></div>
+            <form id="chatForm" class="chat-input-area">
+                <label class="sr-only" for="chatInput">Talk to LUMI</label>
+                <input type="text" id="chatInput" placeholder="Talk to LUMI..." autocomplete="off" maxlength="600">
+                <button id="chatSendButton" type="submit" aria-label="Send message">↑</button>
+            </form>
+        </aside>
+
+        <div id="appStatus" class="sr-only" role="status" aria-live="polite"></div>
+
+    </main>
+
+
+    <!-- Copy config.example.js to config.js and add your Spotify client ID. -->
+    <script src="config.js"></script>
+    <!-- Spotify Web Playback SDK -->
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+    <!-- Spotify authentication -->
+    <script src="spotify-auth.js"></script>
+
+    <!-- Testable music-memory and recommendation helpers -->
+    <script src="music-logic.js"></script>
+
+    <!-- LUMI main JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>

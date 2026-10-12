@@ -1,0 +1,17 @@
+{
+  "name": "lumi-ai-music-companion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LUMI, a Gemini-powered Spotify music companion",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node --test test/*.test.js",
+    "check": "node --check script.js && node --check spotify-auth.js && node --check server/server.js && node --check music-logic.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.27.0",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1"
+  }
+}

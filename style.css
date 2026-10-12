@@ -1,0 +1,2314 @@
+/* =========================================================
+   LUMI — AMBIENT INTELLIGENCE
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 47%,
+            #173d6d 0%,
+            #0b2447 28%,
+            #06152d 55%,
+            #020916 78%,
+            #01040b 100%
+        );
+
+    color: white;
+}
+
+
+/* =========================================================
+   MAIN UNIVERSE
+========================================================= */
+
+.universe {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    perspective: 1200px;
+    pointer-events: none;
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.universe::before {
+    content: "";
+
+    position: absolute;
+
+    width: 850px;
+    height: 850px;
+
+    left: 50%;
+    top: 47%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(75,166,255,.20) 0%,
+            rgba(40,120,220,.10) 28%,
+            rgba(20,80,160,.04) 52%,
+            transparent 72%
+        );
+
+    filter: blur(30px);
+
+    animation:
+        atmosphereBreath 8s ease-in-out infinite;
+
+    z-index: 0;
+}
+
+@keyframes atmosphereBreath {
+
+    0%,100% {
+        transform:
+            translate(-50%, -50%)
+            scale(.92);
+
+        opacity: .65;
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.space-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(110px);
+
+    mix-blend-mode: screen;
+}
+
+.glow-a {
+    width: 650px;
+    height: 650px;
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(75,175,255,.32),
+            rgba(30,110,220,.10),
+            transparent 70%
+        );
+
+    animation:
+        mainGlow 7s ease-in-out infinite;
+}
+
+.glow-b {
+    width: 550px;
+    height: 550px;
+
+    left: -180px;
+    top: 5%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(40,120,255,.16),
+            transparent 70%
+        );
+
+    animation:
+        driftLeft 18s ease-in-out infinite;
+}
+
+.glow-c {
+    width: 600px;
+    height: 600px;
+
+    right: -200px;
+    bottom: -150px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(70,160,255,.14),
+            transparent 70%
+        );
+
+    animation:
+        driftRight 20s ease-in-out infinite;
+}
+
+@keyframes mainGlow {
+
+    0%,100% {
+        opacity: .55;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.94);
+    }
+
+    50% {
+        opacity: .9;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+}
+
+@keyframes driftLeft {
+
+    0%,100% {
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(130px,60px,0)
+            scale(1.12);
+    }
+}
+
+@keyframes driftRight {
+
+    0%,100% {
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(-110px,-70px,0)
+            scale(1.14);
+    }
+}
+
+
+/* =========================================================
+   CENTRAL LUMI RING
+========================================================= */
+
+.universe::after {
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 230px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(120,205,255,.09);
+
+    box-shadow:
+        0 0 50px rgba(80,170,255,.05),
+        inset 0 0 50px rgba(80,170,255,.04);
+
+    animation:
+        lumiPulse 5s ease-in-out infinite;
+
+    z-index: 1;
+}
+
+@keyframes lumiPulse {
+
+    0%,100% {
+        transform:
+            translate(-50%, -50%)
+            scale(.94);
+
+        opacity: .35;
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.07);
+
+        opacity: .75;
+    }
+}
+
+
+/* =========================================================
+   LIGHT WAVES
+========================================================= */
+
+.light-wave {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 850px;
+    height: 850px;
+
+    border:
+        1px solid rgba(120,205,255,.055);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        wavePulse 12s ease-out infinite;
+}
+
+.wave-2 {
+    width: 1200px;
+    height: 1200px;
+
+    animation-delay: 5s;
+
+    opacity: .45;
+}
+
+@keyframes wavePulse {
+
+    0% {
+        transform:
+            translate(-50%, -50%)
+            scale(.68);
+
+        opacity: 0;
+    }
+
+    25% {
+        opacity: .5;
+    }
+
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.star-layer {
+    position: absolute;
+
+    inset: -120px;
+
+    pointer-events: none;
+
+    transition:
+        transform 1.5s cubic-bezier(.2,.8,.2,1);
+}
+
+.layer-small {
+    transform: translateZ(0);
+}
+
+.layer-medium {
+    transform: translateZ(-100px);
+}
+
+.layer-large {
+    transform: translateZ(-220px);
+}
+
+.star-layer .stars {
+    position: absolute;
+
+    inset: 0;
+}
+
+.stars {
+    position: absolute;
+
+    inset: -100px;
+
+    background-repeat: repeat;
+
+    pointer-events: none;
+}
+
+.stars-small {
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(220,242,255,.55) 1px,
+            transparent 1.5px
+        );
+
+    background-size: 95px 95px;
+
+    opacity: .28;
+
+    animation:
+        starDriftSmall 45s linear infinite;
+}
+
+.stars-medium {
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(180,225,255,.55) 1.2px,
+            transparent 2px
+        );
+
+    background-size: 180px 180px;
+
+    opacity: .20;
+
+    filter: blur(.2px);
+
+    animation:
+        starDriftMedium 65s linear infinite;
+}
+
+.stars-large {
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(140,205,255,.6) 1.8px,
+            transparent 3px
+        );
+
+    background-size: 300px 300px;
+
+    opacity: .13;
+
+    filter: blur(.5px);
+
+    animation:
+        starDriftLarge 90s linear infinite;
+}
+
+@keyframes starDriftSmall {
+
+    from {
+        transform:
+            translate3d(0,0,0);
+    }
+
+    to {
+        transform:
+            translate3d(-100px,70px,0);
+    }
+}
+
+@keyframes starDriftMedium {
+
+    from {
+        transform:
+            translate3d(0,0,0)
+            scale(1);
+    }
+
+    to {
+        transform:
+            translate3d(120px,-90px,0)
+            scale(1.04);
+    }
+}
+
+@keyframes starDriftLarge {
+
+    from {
+        transform:
+            translate3d(0,0,0);
+    }
+
+    to {
+        transform:
+            translate3d(-150px,-120px,0);
+    }
+}
+
+
+/* =========================================================
+   FLOATING STARS
+========================================================= */
+
+.floating-star {
+    position: absolute;
+
+    color:
+        rgba(185,225,255,.65);
+
+    font-size: 13px;
+
+    text-shadow:
+        0 0 14px rgba(110,195,255,.8);
+
+    animation:
+        floatingStar 6s ease-in-out infinite;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.star-1 {
+    left: 13%;
+    top: 23%;
+}
+
+.star-2 {
+    left: 81%;
+    top: 18%;
+    animation-delay: 1s;
+}
+
+.star-3 {
+    left: 88%;
+    top: 72%;
+    animation-delay: 2s;
+}
+
+.star-4 {
+    left: 19%;
+    top: 76%;
+    animation-delay: 3s;
+}
+
+.star-5 {
+    left: 69%;
+    top: 30%;
+    animation-delay: 1.5s;
+}
+
+.star-6 {
+    left: 31%;
+    top: 16%;
+    animation-delay: 2.5s;
+}
+
+.star-7 {
+    left: 8%;
+    top: 53%;
+    animation-delay: 4s;
+}
+
+.star-8 {
+    left: 59%;
+    top: 84%;
+    animation-delay: 3.5s;
+}
+
+@keyframes floatingStar {
+
+    0%,100% {
+        opacity: .18;
+
+        transform:
+            translateY(8px)
+            rotate(0deg)
+            scale(.75);
+    }
+
+    50% {
+        opacity: .85;
+
+        transform:
+            translateY(-15px)
+            rotate(18deg)
+            scale(1.12);
+    }
+}
+
+
+/* =========================================================
+   LUMI FACE
+========================================================= */
+
+.lumi-stage {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+.lumi {
+    position: relative;
+
+    width: 500px;
+    height: 300px;
+
+    animation:
+        lumiFloat 5.5s ease-in-out infinite;
+
+    transition:
+        transform .7s cubic-bezier(.2,.8,.2,1);
+}
+
+.lumi::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 310px;
+    height: 170px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(75,175,255,.14),
+            rgba(80,170,255,.04),
+            transparent 70%
+        );
+
+    filter: blur(25px);
+
+    animation:
+        lumiAura 4.5s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+.lumi::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 220px;
+    height: 125px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(150,220,255,.06),
+            transparent 68%
+        );
+
+    filter: blur(14px);
+
+    animation:
+        innerAura 3.8s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes lumiFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translateY(-9px)
+            rotate(.25deg)
+            scale(1.012);
+    }
+}
+
+@keyframes lumiAura {
+
+    0%,100% {
+        opacity: .40;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.92);
+    }
+
+    50% {
+        opacity: .82;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+}
+
+@keyframes innerAura {
+
+    0%,100% {
+        opacity: .25;
+
+        transform:
+            translate(-50%, -50%)
+            scale(.9);
+    }
+
+    50% {
+        opacity: .7;
+
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+    }
+}
+
+.lumi-face {
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    filter:
+        drop-shadow(
+            0 0 9px rgba(120,205,255,.22)
+        )
+        drop-shadow(
+            0 0 30px rgba(70,160,255,.16)
+        );
+}
+
+#leftEye,
+#rightEye {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#leftEyeShape,
+#rightEyeShape {
+    transition:
+        rx .8s cubic-bezier(.25,.8,.25,1),
+        ry .8s cubic-bezier(.25,.8,.25,1);
+}
+
+#leftHighlight,
+#rightHighlight,
+#leftSmallHighlight,
+#rightSmallHighlight {
+    transition:
+        cx .22s ease,
+        cy .22s ease,
+        opacity .3s ease;
+}
+
+#leftCheek,
+#rightCheek {
+    filter: blur(1.8px);
+
+    transform-box: fill-box;
+    transform-origin: center;
+
+    transition:
+        opacity .9s ease,
+        rx .9s ease,
+        ry .9s ease,
+        transform .35s cubic-bezier(.25,.8,.25,1);
+}
+
+#mouth {
+    fill: none;
+
+    stroke: #02050b;
+
+    stroke-width: 6;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition:
+        d .5s cubic-bezier(.25,.8,.25,1);
+}
+
+.blink {
+    transform: scaleY(.05);
+}
+
+
+/* =========================================================
+   LUMI ATTENTION / INTERACTION
+========================================================= */
+
+.universe.attention .glow-a {
+    opacity: 1;
+
+    filter: blur(85px);
+}
+
+.universe.attention::after {
+    opacity: .9;
+
+    box-shadow:
+        0 0 65px rgba(80,180,255,.10),
+        inset 0 0 55px rgba(80,180,255,.08);
+}
+
+.universe.attention .lumi::before {
+    animation:
+        attentionAura 1.8s ease-in-out infinite;
+}
+
+@keyframes attentionAura {
+
+    0%,100% {
+        transform:
+            translate(-50%, -50%)
+            scale(.95);
+
+        opacity: .45;
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.12);
+
+        opacity: .9;
+    }
+}
+
+.lumi.interacting {
+    animation:
+        lumiReact .7s cubic-bezier(.2,.8,.2,1);
+}
+
+.lumi.interacting .lumi-face {
+    filter:
+        drop-shadow(
+            0 0 18px rgba(110,210,255,.48)
+        )
+        drop-shadow(
+            0 0 50px rgba(70,160,255,.30)
+        );
+}
+
+@keyframes lumiReact {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+    30% {
+        transform:
+            translateY(-7px)
+            scale(1.035);
+    }
+
+    60% {
+        transform:
+            translateY(2px)
+            scale(.995);
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   MUSIC UNIVERSE
+========================================================= */
+
+.music-universe {
+    position: absolute;
+
+    width: 700px;
+    height: 520px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* =========================================================
+   SPOTIFY SEARCH
+========================================================= */
+
+.spotify-search {
+    position: absolute;
+
+    left: 50%;
+    top: -58px;
+
+    transform:
+        translateX(-50%);
+
+    width: 360px;
+
+    display: flex;
+
+    gap: 8px;
+
+    pointer-events: auto;
+
+    z-index: 20;
+}
+
+.spotify-search input {
+    flex: 1;
+
+    height: 34px;
+
+    padding:
+        0 14px;
+
+    border:
+        1px solid rgba(150,215,255,.18);
+
+    border-radius: 20px;
+
+    outline: none;
+
+    background:
+        rgba(20,55,95,.32);
+
+    backdrop-filter: blur(12px);
+
+    color:
+        rgba(235,249,255,.9);
+
+    font-size: 10px;
+
+    letter-spacing: .8px;
+}
+
+.spotify-search input::placeholder {
+    color:
+        rgba(190,225,255,.38);
+}
+
+.spotify-search input:focus {
+    border-color:
+        rgba(150,220,255,.38);
+
+    box-shadow:
+        0 0 20px rgba(80,180,255,.10);
+}
+
+.spotify-search button {
+    height: 34px;
+
+    padding:
+        0 14px;
+
+    border:
+        1px solid rgba(160,220,255,.20);
+
+    border-radius: 20px;
+
+    background:
+        rgba(80,160,230,.08);
+
+    color:
+        rgba(220,242,255,.68);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    transition:
+        all .25s ease;
+}
+
+.spotify-search button:hover {
+    color: white;
+
+    background:
+        rgba(90,180,255,.15);
+
+    border-color:
+        rgba(160,225,255,.40);
+
+    box-shadow:
+        0 0 18px rgba(80,180,255,.12);
+}
+
+.search-results {
+    position: absolute;
+
+    left: 50%;
+    top: -17px;
+
+    transform:
+        translateX(-50%);
+
+    width: 360px;
+
+    max-height: 190px;
+
+    overflow-y: auto;
+
+    pointer-events: auto;
+
+    z-index: 19;
+}
+
+.search-results::-webkit-scrollbar {
+    width: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background:
+        rgba(150,215,255,.25);
+
+    border-radius: 10px;
+}
+
+
+/* =========================================================
+   SONG INFORMATION
+========================================================= */
+
+.song-info {
+    position: absolute;
+
+    left: 50%;
+    top: 2px;
+
+    transform:
+        translateX(-50%);
+
+    width: 360px;
+
+    text-align: center;
+}
+
+.song-label {
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(190,225,255,.42);
+
+    margin-bottom: 9px;
+
+    text-transform: uppercase;
+}
+
+.song-title {
+    font-size: 17px;
+
+    font-weight: 500;
+
+    letter-spacing: 1.4px;
+
+    color:
+        rgba(240,249,255,.92);
+
+    text-shadow:
+        0 0 20px rgba(100,195,255,.32);
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.song-artist {
+    margin-top: 5px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(170,215,245,.52);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   EQUALIZER
+========================================================= */
+
+.equalizer {
+    position: absolute;
+
+    left: 50%;
+    bottom: 145px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    height: 28px;
+
+    opacity: .55;
+}
+
+.equalizer span {
+    width: 2px;
+    height: 4px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(190,230,255,.9);
+
+    box-shadow:
+        0 0 7px rgba(100,190,255,.45);
+
+    animation:
+        equalizerIdle
+        1.5s ease-in-out infinite;
+}
+
+.equalizer span:nth-child(1) { animation-delay: -.2s; }
+.equalizer span:nth-child(2) { animation-delay: -.5s; }
+.equalizer span:nth-child(3) { animation-delay: -.8s; }
+.equalizer span:nth-child(4) { animation-delay: -.3s; }
+.equalizer span:nth-child(5) { animation-delay: -.7s; }
+.equalizer span:nth-child(6) { animation-delay: -.1s; }
+.equalizer span:nth-child(7) { animation-delay: -.6s; }
+.equalizer span:nth-child(8) { animation-delay: -.4s; }
+.equalizer span:nth-child(9) { animation-delay: -.9s; }
+
+@keyframes equalizerIdle {
+
+    0%,100% {
+        height: 4px;
+        opacity: .25;
+    }
+
+    50% {
+        height: 21px;
+        opacity: .8;
+    }
+}
+
+
+/* =========================================================
+   MUSIC PROGRESS
+========================================================= */
+
+.music-progress {
+    position: absolute;
+
+    left: 50%;
+    bottom: 94px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    width: 390px;
+
+    color:
+        rgba(200,230,250,.42);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+}
+
+.progress-track {
+    position: relative;
+
+    flex: 1;
+
+    height: 2px;
+
+    background:
+        rgba(190,225,255,.11);
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+}
+
+.progress-track::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -5px 0;
+
+    cursor: pointer;
+}
+
+.progress-fill {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    height: 100%;
+
+    width: 0%;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(130,205,255,.55),
+            rgba(220,247,255,.95)
+        );
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 0 9px rgba(110,205,255,.65);
+}
+
+
+/* =========================================================
+   MUSIC CONTROLS
+========================================================= */
+
+.music-controls {
+    position: absolute;
+
+    left: 50%;
+    bottom: 25px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    pointer-events: auto;
+}
+
+.music-button {
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transition:
+        transform .3s cubic-bezier(.2,.8,.2,1),
+        opacity .3s ease,
+        filter .3s ease;
+}
+
+.music-button:hover {
+    transform:
+        scale(1.12);
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(130,215,255,.75)
+        );
+}
+
+.music-button:active {
+    transform:
+        scale(.9);
+}
+
+.secondary {
+    width: 34px;
+    height: 34px;
+
+    font-size: 31px;
+
+    font-weight: 200;
+
+    color:
+        rgba(215,238,255,.55);
+}
+
+.play-button {
+    position: relative;
+
+    width: 60px;
+    height: 60px;
+
+    border:
+        1px solid rgba(180,230,255,.42);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,185,255,.15),
+            rgba(70,150,230,.035)
+        );
+
+    box-shadow:
+        0 0 24px rgba(70,170,255,.16),
+        inset 0 0 20px rgba(110,205,255,.06);
+
+    font-size: 17px;
+
+    backdrop-filter: blur(5px);
+}
+
+.play-button::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -7px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(130,210,255,.08);
+
+    animation:
+        playRing 3s ease-in-out infinite;
+}
+
+.play-button:hover {
+    background:
+        radial-gradient(
+            circle,
+            rgba(110,200,255,.22),
+            rgba(70,150,230,.05)
+        );
+
+    box-shadow:
+        0 0 35px rgba(80,180,255,.30),
+        inset 0 0 25px rgba(100,200,255,.10);
+}
+
+@keyframes playRing {
+
+    0%,100% {
+        transform: scale(.96);
+        opacity: .25;
+    }
+
+    50% {
+        transform: scale(1.04);
+        opacity: .65;
+    }
+}
+
+
+/* =========================================================
+   CONNECT SPOTIFY
+========================================================= */
+
+.spotify-button {
+    position: absolute;
+
+    left: 50%;
+    bottom: -22px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        8px 16px;
+
+    border:
+        1px solid rgba(160,220,255,.18);
+
+    border-radius: 30px;
+
+    background:
+        rgba(80,160,230,.045);
+
+    color:
+        rgba(205,235,255,.58);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    backdrop-filter: blur(10px);
+
+    transition:
+        all .3s ease;
+}
+
+.spotify-button:hover {
+    color:
+        rgba(235,250,255,.9);
+
+    border-color:
+        rgba(150,220,255,.38);
+
+    background:
+        rgba(90,180,255,.09);
+
+    box-shadow:
+        0 0 20px rgba(80,180,255,.12);
+}
+
+
+/* =========================================================
+   MUSIC PARTICLES
+========================================================= */
+
+.music-particles {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.music-particles span {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(170,225,255,.65);
+
+    box-shadow:
+        0 0 8px rgba(100,195,255,.7);
+
+    animation:
+        musicParticle
+        6s ease-in-out infinite;
+}
+
+.music-particles span:nth-child(1) {
+    left: 17%;
+    top: 30%;
+}
+
+.music-particles span:nth-child(2) {
+    right: 16%;
+    top: 32%;
+    animation-delay: 1.2s;
+}
+
+.music-particles span:nth-child(3) {
+    left: 10%;
+    top: 55%;
+    animation-delay: 2s;
+}
+
+.music-particles span:nth-child(4) {
+    right: 11%;
+    top: 55%;
+    animation-delay: 2.8s;
+}
+
+.music-particles span:nth-child(5) {
+    left: 24%;
+    top: 72%;
+    animation-delay: 1.5s;
+}
+
+.music-particles span:nth-child(6) {
+    right: 24%;
+    top: 70%;
+    animation-delay: 3.2s;
+}
+
+@keyframes musicParticle {
+
+    0%,100% {
+        opacity: .12;
+
+        transform:
+            translateY(8px)
+            translateX(0)
+            scale(.7);
+    }
+
+    50% {
+        opacity: .75;
+
+        transform:
+            translateY(-15px)
+            translateX(5px)
+            scale(1.1);
+    }
+}
+
+
+/* =========================================================
+   LUMI AI — FLOATING CONVERSATION
+========================================================= */
+
+.lumi-chat {
+    position: fixed;
+
+    right: 45px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    width: 310px;
+
+    z-index: 30;
+
+    pointer-events: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: stretch;
+}
+
+
+/* Conversation area */
+
+.chat-messages {
+    width: 100%;
+
+    max-height: 420px;
+
+    overflow-y: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    padding:
+        10px 5px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        rgba(150,215,255,.20)
+        transparent;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background:
+        rgba(150,215,255,.22);
+
+    border-radius: 10px;
+}
+
+
+/* LUMI bubble */
+
+.lumi-message {
+    align-self: flex-start;
+
+    max-width: 270px;
+
+    padding:
+        12px 16px;
+
+    border-radius:
+        18px 18px 18px 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(40,110,190,.24),
+            rgba(20,65,125,.16)
+        );
+
+    border:
+        1px solid rgba(130,205,255,.22);
+
+    backdrop-filter:
+        blur(18px);
+
+    color:
+        rgba(235,248,255,.88);
+
+    font-size: 11px;
+
+    line-height: 1.55;
+
+    letter-spacing: .2px;
+
+    box-shadow:
+        0 0 25px rgba(60,160,255,.07),
+        inset 0 0 20px rgba(120,210,255,.025);
+
+    animation:
+        bubbleAppear .4s ease-out;
+}
+
+
+/* Tiny glowing LUMI dot before messages */
+
+.lumi-message::before {
+    content: "✦";
+
+    display: inline-block;
+
+    margin-right: 6px;
+
+    color:
+        rgba(170,225,255,.85);
+
+    text-shadow:
+        0 0 8px rgba(100,200,255,.8);
+}
+
+
+/* User bubble */
+
+.user-message {
+    align-self: flex-end;
+
+    max-width: 230px;
+
+    padding:
+        10px 15px;
+
+    border-radius:
+        18px 18px 5px 18px;
+
+    background:
+        rgba(100,175,245,.10);
+
+    border:
+        1px solid rgba(150,215,255,.15);
+
+    backdrop-filter:
+        blur(15px);
+
+    color:
+        rgba(235,247,255,.82);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+
+    letter-spacing: .2px;
+
+    animation:
+        bubbleAppear .4s ease-out;
+}
+
+
+/* Chat input */
+
+.chat-input-area {
+    width: 100%;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 6px;
+
+    padding:
+        4px 5px 4px 15px;
+
+    border:
+        1px solid rgba(140,210,255,.18);
+
+    border-radius: 24px;
+
+    background:
+        rgba(10,35,68,.40);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 0 25px rgba(50,150,255,.07),
+        inset 0 0 18px rgba(100,190,255,.025);
+}
+
+.chat-input-area input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    color:
+        rgba(240,249,255,.92);
+
+    font-size: 10px;
+
+    letter-spacing: .4px;
+}
+
+.chat-input-area input::placeholder {
+    color:
+        rgba(190,225,255,.38);
+}
+
+.chat-input-area button {
+    width: 32px;
+    height: 32px;
+
+    flex-shrink: 0;
+
+    border:
+        1px solid rgba(150,215,255,.20);
+
+    border-radius: 50%;
+
+    background:
+        rgba(80,170,240,.10);
+
+    color:
+        rgba(220,242,255,.78);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    transition:
+        all .25s ease;
+}
+
+.chat-input-area button:hover {
+    color: white;
+
+    background:
+        rgba(100,190,255,.18);
+
+    border-color:
+        rgba(170,225,255,.40);
+
+    box-shadow:
+        0 0 15px rgba(80,180,255,.15);
+
+    transform:
+        scale(1.08);
+}
+
+.chat-input-area button:active {
+    transform:
+        scale(.92);
+}
+
+@keyframes bubbleAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(8px)
+            scale(.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .lumi-chat {
+        right: 20px;
+
+        width: 270px;
+    }
+
+    .lumi-message {
+        max-width: 240px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .lumi {
+        width: 390px;
+        height: 235px;
+    }
+
+    .music-universe {
+        width: 100vw;
+        height: 470px;
+    }
+
+    .song-info {
+        top: 0;
+        width: 280px;
+    }
+
+    .song-title {
+        font-size: 15px;
+    }
+
+    .music-progress {
+        width: 300px;
+    }
+
+    .universe::after {
+        width: 340px;
+        height: 190px;
+    }
+
+    .spotify-button {
+        bottom: -18px;
+    }
+
+    .spotify-search {
+        width: 300px;
+    }
+
+    .search-results {
+        width: 300px;
+    }
+
+    .lumi-chat {
+        right: 12px;
+        top: auto;
+        bottom: 18px;
+
+        transform: none;
+
+        width: 260px;
+    }
+
+    .chat-messages {
+        max-height: 170px;
+    }
+}
+
+/* =========================================================
+   LUMI V2 — INTERACTION, PANELS, AND ACCESSIBILITY
+========================================================= */
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.app-header {
+    position: fixed;
+    top: 28px;
+    left: 34px;
+    right: 34px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: auto;
+}
+
+.brand-mark,
+.chat-heading {
+    color: rgba(224, 244, 255, .78);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.brand-mark span,
+.chat-heading span:first-child {
+    color: rgba(173, 225, 255, .95);
+    text-shadow: 0 0 12px rgba(108, 198, 255, .8);
+}
+
+.header-actions {
+    display: flex;
+    gap: 9px;
+}
+
+.utility-button,
+.panel-close {
+    border: 1px solid rgba(159, 219, 255, .2);
+    background: rgba(12, 42, 78, .38);
+    color: rgba(224, 244, 255, .76);
+    border-radius: 999px;
+    font: inherit;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(15px);
+    transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
+}
+
+.utility-button {
+    padding: 9px 13px;
+}
+
+.utility-button:hover,
+.utility-button:focus-visible,
+.panel-close:hover,
+.panel-close:focus-visible {
+    color: #fff;
+    border-color: rgba(172, 229, 255, .5);
+    background: rgba(75, 165, 235, .16);
+    outline: none;
+}
+
+.utility-button:active {
+    transform: scale(.97);
+}
+
+.lumi-signature {
+    position: absolute;
+    left: 50%;
+    bottom: 104px;
+    width: 168px;
+    height: 50px;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: .72;
+    pointer-events: none;
+}
+
+.lumi-signature span {
+    display: block;
+    width: 2px;
+    height: var(--signature-height, 14px);
+    border-radius: 999px;
+    background: linear-gradient(to bottom, rgba(219, 247, 255, .26), rgba(115, 202, 255, .9), rgba(219, 247, 255, .26));
+    box-shadow: 0 0 9px rgba(114, 202, 255, .46);
+    transition: height .35s ease, opacity .35s ease;
+}
+
+.lumi-signature span:nth-child(3n) { --signature-height: 28px; }
+.lumi-signature span:nth-child(4n) { --signature-height: 20px; }
+.lumi-signature span:nth-child(5n) { --signature-height: 34px; }
+.lumi-signature span:nth-child(7n) { --signature-height: 10px; }
+
+.lumi-signature.is-playing span {
+    animation: signaturePulse 800ms ease-in-out infinite alternate;
+}
+
+.lumi-signature.is-playing span:nth-child(2n) { animation-delay: -360ms; }
+.lumi-signature.is-playing span:nth-child(3n) { animation-delay: -120ms; }
+.lumi-signature.is-playing span:nth-child(5n) { animation-delay: -510ms; }
+
+@keyframes signaturePulse {
+    from { transform: scaleY(.5); opacity: .5; }
+    to { transform: scaleY(1.35); opacity: 1; }
+}
+
+.equalizer.is-playing span {
+    animation-name: equalizerPlaying;
+    opacity: .95;
+}
+
+@keyframes equalizerPlaying {
+    0%,100% { height: 5px; opacity: .42; }
+    50% { height: 27px; opacity: 1; }
+}
+
+.universe.is-playing .glow-a {
+    opacity: 1;
+    filter: blur(80px);
+}
+
+.universe.is-playing .music-particles span {
+    animation-duration: 3.5s;
+}
+
+.chat-heading {
+    margin: 0 0 5px 7px;
+    font-size: 8px;
+    opacity: .72;
+}
+
+.chat-heading span:first-child {
+    margin-right: 5px;
+}
+
+.lumi-message.is-pending {
+    color: rgba(222, 242, 255, .58);
+    font-style: italic;
+}
+
+.chat-input-area input:disabled,
+.chat-input-area button:disabled {
+    cursor: wait;
+    opacity: .58;
+}
+
+.track-row {
+    width: 100%;
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 9px;
+    border: 1px solid rgba(139, 207, 255, .14);
+    border-radius: 13px;
+    background: rgba(7, 29, 59, .7);
+    color: rgba(235, 248, 255, .9);
+    text-align: left;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    transition: border-color .2s ease, background .2s ease, transform .2s ease;
+}
+
+.track-row + .track-row {
+    margin-top: 6px;
+}
+
+.track-row:hover,
+.track-row:focus-visible {
+    border-color: rgba(156, 224, 255, .48);
+    background: rgba(31, 88, 146, .52);
+    outline: none;
+    transform: translateY(-1px);
+}
+
+.track-row img,
+.track-art-fallback {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+.track-art-fallback {
+    display: grid;
+    place-items: center;
+    color: rgba(204, 240, 255, .86);
+    background: radial-gradient(circle, rgba(100, 189, 255, .4), rgba(33, 93, 157, .22));
+}
+
+.track-text {
+    min-width: 0;
+    display: grid;
+    gap: 3px;
+}
+
+.track-text strong,
+.track-text small {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.track-text strong {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .25px;
+}
+
+.track-text small {
+    color: rgba(184, 220, 245, .62);
+    font-size: 9px;
+    letter-spacing: .7px;
+}
+
+.track-action {
+    margin-left: auto;
+    color: rgba(185, 226, 255, .72);
+    font-size: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.side-panel {
+    position: fixed;
+    z-index: 50;
+    top: 74px;
+    left: 34px;
+    width: min(350px, calc(100vw - 68px));
+    max-height: min(690px, calc(100vh - 110px));
+    overflow: auto;
+    padding: 19px;
+    border: 1px solid rgba(150, 215, 255, .22);
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(14, 53, 96, .86), rgba(5, 25, 55, .9));
+    box-shadow: 0 18px 60px rgba(0, 8, 24, .42), inset 0 0 28px rgba(135, 209, 255, .04);
+    backdrop-filter: blur(22px);
+    pointer-events: auto;
+}
+
+.side-panel[hidden] {
+    display: none;
+}
+
+.panel-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.panel-heading h2 {
+    color: rgba(239, 249, 255, .94);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: .3px;
+}
+
+.eyebrow {
+    margin-bottom: 5px;
+    color: rgba(173, 218, 245, .57);
+    font-size: 8px;
+    letter-spacing: 1.8px;
+}
+
+.panel-close {
+    display: grid;
+    width: 27px;
+    height: 27px;
+    place-items: center;
+    padding: 0;
+    font-size: 17px;
+    line-height: 1;
+}
+
+.panel-copy {
+    margin: 13px 0 17px;
+    color: rgba(218, 239, 255, .7);
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.album-tracks {
+    display: grid;
+    gap: 7px;
+}
+
+.memory-group + .memory-group {
+    margin-top: 17px;
+}
+
+.memory-group h3 {
+    margin-bottom: 8px;
+    color: rgba(204, 234, 253, .78);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.memory-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.memory-chip {
+    border: 1px solid rgba(145, 211, 255, .19);
+    border-radius: 999px;
+    padding: 6px 9px;
+    background: rgba(99, 175, 241, .09);
+    color: rgba(222, 244, 255, .78);
+    font-size: 10px;
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.memory-chip:hover,
+.memory-chip:focus-visible {
+    border-color: rgba(255, 162, 194, .52);
+    background: rgba(204, 78, 131, .16);
+    color: #fff;
+    outline: none;
+}
+
+.memory-empty {
+    color: rgba(211, 237, 255, .59);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+    html,
+    body {
+        overflow: hidden;
+    }
+
+    .app-header {
+        top: 14px;
+        left: 15px;
+        right: 15px;
+    }
+
+    .brand-mark {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .header-actions {
+        gap: 6px;
+    }
+
+    .utility-button {
+        padding: 7px 9px;
+        font-size: 8px;
+        letter-spacing: .6px;
+    }
+
+    .lumi-stage {
+        align-items: flex-start;
+        padding-top: 76px;
+    }
+
+    .lumi {
+        transform: scale(.76);
+        transform-origin: center top;
+    }
+
+    .music-universe {
+        top: 45%;
+        transform: translate(-50%, -50%) scale(.88);
+    }
+
+    .lumi-chat {
+        z-index: 45;
+        width: min(360px, calc(100vw - 24px));
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .chat-messages {
+        max-height: 125px;
+    }
+
+    .side-panel {
+        top: 59px;
+        left: 12px;
+        width: calc(100vw - 24px);
+        max-height: min(510px, calc(100vh - 76px));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}

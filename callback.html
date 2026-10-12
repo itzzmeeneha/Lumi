@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LUMI — Connecting Spotify</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #193c70 0%,
+                    #07152d 45%,
+                    #020817 100%
+                );
+
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .message {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="message">
+        Connecting LUMI to Spotify...
+    </div>
+
+    <script src="config.js"></script>
+    <script src="spotify-auth.js"></script>
+
+</body>
+</html>
