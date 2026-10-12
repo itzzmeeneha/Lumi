@@ -6,5 +6,5 @@
  */
 window.LUMI_CONFIG = {
     spotifyClientId: "f847f1ce866c4cb0b9364619ff383119",
-    spotifyRedirectUri: "http://127.0.0.1:3002/callback.html"
+    spotifyRedirectUri: "https://lumi-0o7y.onrender.com/callback.html"
 };

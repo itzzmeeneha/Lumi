@@ -20,18 +20,18 @@ cd /Users/neha/Desktop/Lumi
 npm install
 ```
 
-Create `.env` from `.env.example` and `config.js` from `config.example.js` only if you do not already have those files; keep your existing local credentials/configuration.
+Create `.env` from `.env.example` only if you do not already have it; keep your existing local credentials. The hosted app loads the public Spotify client configuration from `config.example.js`.
 
 1. Put your Gemini key in `.env` as `GEMINI_API_KEY=...`.
-2. In the Spotify Developer Dashboard, add `http://127.0.0.1:3002/callback.html` as an exact Redirect URI.
-3. Put that Spotify application's **client ID** (never a client secret) in `config.js`. Both the main page and Spotify callback load this file.
+2. In the Spotify Developer Dashboard, add `https://lumi-0o7y.onrender.com/callback.html` as an exact Redirect URI. For local development, also add `http://127.0.0.1:3002/callback.html`.
+3. Set the Spotify application's **client ID** (never a client secret) in `config.example.js`. Both the main page and Spotify callback load this file.
 4. Start the API:
 
 ```bash
 npm start
 ```
 
-5. Open the app at the origin that exactly matches `spotifyRedirectUri` in your local `config.js`, then select **Connect Spotify**. The Node server serves both the API and frontend at `http://127.0.0.1:3002/`. If your existing config uses VS Code Live Server on port 5500, keep using that origin and make sure the identical URI is registered in Spotify; the app still calls the API on port 3002.
+5. Open the app at the origin that exactly matches `spotifyRedirectUri`, then select **Connect Spotify**. The Node server serves both the API and frontend at `http://127.0.0.1:3002/` locally and at the Render URL in production.
 
 ## Verify locally
 
